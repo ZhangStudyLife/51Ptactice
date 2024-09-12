@@ -1,5 +1,5 @@
 #include <INTRINS.H>
-void Delay(unsigned char n)	//@11.0592MHz
+void Delay(unsigned int n)	//@11.0592MHz
 {
 	while(n!=0){
 		unsigned char data i, j;
