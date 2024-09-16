@@ -1,0 +1,102 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              09/11/2024 02:36:46 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\KEILC51\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include <INTRINS.H>
+   3          #include <stdio.h>
+   4          unsigned char reverseBits(unsigned char num) {
+   5   1          unsigned char result = 0;
+   6   1          unsigned char i; // 将 i 的类型更改为 unsigned char
+   7   1          for (i = 0; i < 8; i++) {
+   8   2              result <<= 1;                // 将结果左移一位，为当前最低位腾出位置
+   9   2              result |= (num & 1);         // 获取 num 的最低位，合并到结果的最低位
+  10   2              num >>= 1;                   // 将 num 右移一位，处理下一个位
+  11   2          }
+  12   1          return result;
+  13   1      }
+  14          
+  15          
+  16          void Delay20ms(void)    //@11.0592MHz
+  17          {
+  18   1          unsigned char i, j, k; // 去掉 data 关键字
+  19   1      
+  20   1          _nop_();
+  21   1          i = 1;
+  22   1          j = 52;
+  23   1          k = 74;
+  24   1          do
+  25   1          {
+  26   2              do
+  27   2              {
+  28   3                  while (--k);
+  29   3              } while (--j);
+  30   2          } while (--i);
+  31   1      }
+  32          
+  33          void main()
+  34          {
+  35   1          // K2控制重置 
+  36   1          // K3控制加号
+  37   1          // K4控制减号
+  38   1              unsigned char a = 0xFF;
+  39   1          P2 = 0xFF;   // 将P2端口的初始值设为高电平
+  40   1      
+  41   1          while(1)
+  42   1          {
+  43   2              if (P3_0 == 0)  // 按下K2
+  44   2              {
+  45   3                  Delay20ms(); // 去抖动
+  46   3                  if (P3_0 == 0) // 确认按键仍然按下
+  47   3                  {
+  48   4                      a = 0xFF;
+  49   4                      while (P3_0 == 0); // 等待按键释放
+  50   4                  }
+  51   3              }
+  52   2      
+  53   2              if (P3_2 == 0)  // 按下K3
+  54   2              {
+C51 COMPILER V9.60.7.0   MAIN                                                              09/11/2024 02:36:46 PAGE 2   
+
+  55   3                  Delay20ms(); // 去抖动
+  56   3                  if (P3_2 == 0) // 确认按键仍然按下
+  57   3                  {
+  58   4                      a--;
+  59   4                      while (P3_2 == 0); // 等待按键释放
+  60   4                  }
+  61   3              }
+  62   2      
+  63   2              if (P3_3 == 0)  // 按下K4
+  64   2              {
+  65   3                  Delay20ms(); // 去抖动
+  66   3                  if (P3_3 == 0) // 确认按键仍然按下
+  67   3                  {
+  68   4                      a++;
+  69   4                      while (P3_3 == 0); // 等待按键释放
+  70   4                  }
+  71   3              }
+  72   2      
+  73   2              P2 = reverseBits(a);  // 更新P2端口的输出
+  74   2          }
+  75   1      }
+  76          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     91    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
