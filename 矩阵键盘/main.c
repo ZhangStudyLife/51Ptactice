@@ -5,6 +5,7 @@
 
 //STC89C52RC
 
+<<<<<<< HEAD
 unsigned char KeyNum;
 
 void main()
@@ -19,5 +20,14 @@ void main()
 			Delay(2000);
 			LCD_ShowString(2,1,"                ");
 		}
+=======
+void main()
+ {
+    LCD_Init();
+    while(1)
+    {
+        LCD_ShowNum(1,1,MatrixKey(),2);
+		LCD_ShowNum(2,1,MatrixKey(),1);
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
     }
 }

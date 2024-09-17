@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    09/12/2024  12:55:25  PAGE 1
+=======
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    09/11/2024  17:18:49  PAGE 1
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
@@ -26,9 +30,15 @@ LINK MAP OF MODULE:  .\Objects\project (MAIN)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     00B2H     UNIT         ?PR?_NIXIE?MAIN
+<<<<<<< HEAD
             CODE    00B5H     0018H     UNIT         ?PR?MAIN?MAIN
             CODE    00CDH     0011H     UNIT         ?PR?CLEAN?MAIN
             CODE    00DEH     000CH     UNIT         ?C_C51STARTUP
+=======
+            CODE    00B5H     0019H     UNIT         ?PR?MAIN?MAIN
+            CODE    00CEH     0011H     UNIT         ?PR?CLEAN?MAIN
+            CODE    00DFH     000CH     UNIT         ?C_C51STARTUP
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
 
 
 
@@ -42,7 +52,10 @@ SEGMENT
   +--> ?PR?MAIN?MAIN
 
 ?PR?MAIN?MAIN
+<<<<<<< HEAD
   +--> ?PR?_NIXIE?MAIN
+=======
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
   +--> ?PR?CLEAN?MAIN
 
 ?PR?CLEAN?MAIN
@@ -59,10 +72,17 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
   C:0000H         SYMBOL        _ICE_DUMMY_
   C:0003H         PUBLIC        _Nixie
   D:0080H         PUBLIC        P0
+<<<<<<< HEAD
 BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/12/2024  12:55:25  PAGE 2
 
 
   C:00DAH         PUBLIC        clean
+=======
+  C:00DBH         PUBLIC        clean
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/11/2024  17:18:49  PAGE 2
+
+
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
   B:00A0H.2       PUBLIC        P2_2
   B:00A0H.3       PUBLIC        P2_3
   B:00A0H.4       PUBLIC        P2_4
@@ -118,18 +138,34 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
   C:00B4H         LINE#         48
   C:00B4H         LINE#         49
   -------         ENDPROC       _NIXIE
+<<<<<<< HEAD
   C:00D6H         SYMBOL        L?0036
 BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/12/2024  12:55:25  PAGE 3
+=======
+  C:00CFH         SYMBOL        L?0036
+  C:00D7H         SYMBOL        L?0037
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/11/2024  17:18:49  PAGE 3
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
 
 
   -------         PROC          L?0035
   -------         ENDPROC       L?0035
+<<<<<<< HEAD
   C:00D6H         SYMBOL        L?0036
   -------         PROC          CLEAN
   C:00DAH         LINE#         50
   C:00DAH         LINE#         51
   C:00DAH         LINE#         52
   C:00DDH         LINE#         53
+=======
+  C:00CFH         SYMBOL        L?0036
+  C:00D7H         SYMBOL        L?0037
+  -------         PROC          CLEAN
+  C:00DBH         LINE#         50
+  C:00DBH         LINE#         51
+  C:00DBH         LINE#         52
+  C:00DEH         LINE#         53
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
   -------         ENDPROC       CLEAN
   -------         PROC          MAIN
   C:00B5H         LINE#         54
@@ -137,6 +173,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
   C:00B5H         LINE#         56
   C:00B5H         LINE#         57
   C:00B5H         LINE#         59
+<<<<<<< HEAD
   C:00BCH         LINE#         60
   C:00BFH         LINE#         61
   C:00BFH         LINE#         62
@@ -153,4 +190,26 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
   -------         ENDMOD        MAIN
 
 Program Size: data=9.0 xdata=0 code=234
+=======
+  C:00B9H         LINE#         60
+  C:00B9H         LINE#         61
+  C:00B9H         LINE#         62
+  C:00BCH         LINE#         63
+  C:00BCH         LINE#         64
+  C:00BFH         LINE#         65
+  C:00C1H         LINE#         66
+  C:00C1H         LINE#         67
+  C:00C1H         LINE#         68
+  C:00C4H         LINE#         69
+  C:00C6H         LINE#         70
+  C:00C9H         LINE#         71
+  C:00C9H         LINE#         72
+  C:00C9H         LINE#         73
+  C:00C9H         LINE#         74
+  C:00CCH         LINE#         75
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=235
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

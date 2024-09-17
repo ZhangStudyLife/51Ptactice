@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 C51 COMPILER V9.60.7.0   MATRIXKEY                                                         09/12/2024 20:48:54 PAGE 1   
+=======
+C51 COMPILER V9.60.7.0   MATRIXKEY                                                         09/12/2024 12:13:49 PAGE 1   
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MATRIXKEY
@@ -21,6 +25,7 @@ line level    source
   11   1          if (P1_2==0) {Delay(20);while (P1_2==0);Delay(20);keyNum=2;return keyNum;};
   12   1          if (P1_1==0) {Delay(20);while (P1_1==0);Delay(20);keyNum=3;return keyNum;};
   13   1          if (P1_0==0) {Delay(20);while (P1_0==0);Delay(20);keyNum=4;return keyNum;};
+<<<<<<< HEAD
   14   1          P1=0xFF;
   15   1          P1_6=0;
   16   1          if (P1_3==0) {Delay(20);while (P1_3==0);Delay(20);keyNum=5;return keyNum;};
@@ -74,6 +79,29 @@ line level    source
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    438    ----
+=======
+  14   1          P1_6=0;
+  15   1          if (P1_3==0) {Delay(20);while (P1_3==0);Delay(20);keyNum=5;return keyNum;};
+  16   1          if (P1_2==0) {Delay(20);while (P1_2==0);Delay(20);keyNum=6;return keyNum;};
+  17   1          if (P1_1==0) {Delay(20);while (P1_1==0);Delay(20);keyNum=7;return keyNum;};
+  18   1          if (P1_0==0) {Delay(20);while (P1_0==0);Delay(20);keyNum=8;return keyNum;};
+  19   1          P1_5=0;
+  20   1          if (P1_3==0) {Delay(20);while (P1_3==0);Delay(20);keyNum=9;return keyNum;};
+  21   1          if (P1_2==0) {Delay(20);while (P1_2==0);Delay(20);keyNum=10;return keyNum;};
+  22   1          if (P1_1==0) {Delay(20);while (P1_1==0);Delay(20);keyNum=11;return keyNum;};
+  23   1          if (P1_0==0) {Delay(20);while (P1_0==0);Delay(20);keyNum=12;return keyNum;};
+  24   1          P1_4=0;
+  25   1          if (P1_3==0) {Delay(20);while (P1_3==0);Delay(20);keyNum=13;return keyNum;};
+  26   1          if (P1_2==0) {Delay(20);while (P1_2==0);Delay(20);keyNum=14;return keyNum;};
+  27   1          if (P1_1==0) {Delay(20);while (P1_1==0);Delay(20);keyNum=15;return keyNum;};
+  28   1          if (P1_0==0) {Delay(20);while (P1_0==0);Delay(20);keyNum=16;return keyNum;};
+  29   1      }
+*** WARNING C291 IN LINE 29 OF MatrixKey.c: not every exit path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    429    ----
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

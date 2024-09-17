@@ -55,6 +55,7 @@ void main()
 {
 	while(1)
 	{
+<<<<<<< HEAD
 		//Print 114514
 		Nixie(8,1);
 		clean();
@@ -67,6 +68,24 @@ void main()
 		Nixie(4,1);
 		clean();
 		Nixie(3,4);
+=======
+		//Print20051013
+		Nixie(8,2);
+		clean();
+		Nixie(7,0);
+		clean();
+		Nixie(6,0);
+		clean();
+		Nixie(5,6);
+		clean();
+		Nixie(4,0);
+		clean();
+		Nixie(3,2);
+		clean();
+		Nixie(2,2);
+		clean();
+		Nixie(1,0);
+>>>>>>> 6d397c2d69e7cb89d6aa19427358483d0ade3950
 		clean();
 	}
 }
