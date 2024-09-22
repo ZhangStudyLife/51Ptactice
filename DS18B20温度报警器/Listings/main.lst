@@ -1,0 +1,138 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              09/22/2024 03:24:55 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\KEILC51\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          #include "LCD1602.h"
+   4          #include "DS18B20.h"
+   5          #include "AT24C02.h"
+   6          #include "Key.h"
+*** WARNING C318 IN LINE 6 OF main.c: can't open file 'Key.h'
+   7          
+   8          float Temp,TempShow;
+   9          char TLow=0,THigh=0;
+  10          unsigned char KeyNum;
+  11          void main()
+  12          {
+  13   1              DS18B20_ConvertT();
+  14   1              LCD_Init();
+  15   1              LCD_ShowString(1,1,"Temp:");
+  16   1              LCD_ShowString(2,1,"TL:");
+  17   1              LCD_ShowString(2,9,"TH:");
+  18   1              Delay(750);
+  19   1              THigh=AT24C02_ReadByte(2);
+  20   1              Delay(10);
+  21   1              TLow=AT24C02_ReadByte(1);
+  22   1              Delay(10);
+  23   1              if (THigh>125 || THigh<TLow || TLow<-55)
+  24   1              {
+  25   2                      THigh=28;
+  26   2                      TLow=20;
+  27   2                      AT24C02_WriteByte(1,TLow);
+  28   2                      Delay(10);
+  29   2                      AT24C02_WriteByte(2,THigh);
+  30   2                      Delay(10);
+  31   2              }
+  32   1              while(1)
+  33   1              {
+  34   2      
+  35   2                      KeyNum=Key();
+*** WARNING C206 IN LINE 35 OF main.c: 'Key': missing function-prototype
+  36   2                      //温度读取及显示
+  37   2                      DS18B20_ConvertT();
+  38   2                      Temp=DS18B20_ReadT();
+  39   2                      if (Temp<0)
+  40   2                      {
+  41   3                              LCD_ShowChar(1,6,'-');
+  42   3                              TempShow=-Temp;
+  43   3                      }
+  44   2                      else
+  45   2                      {
+  46   3                              LCD_ShowChar(1,6,'+');
+  47   3                      }
+  48   2                      LCD_ShowNum(1,7,Temp,2);
+  49   2                      LCD_ShowChar(1,9,'.');
+  50   2                      LCD_ShowNum(1,10,(unsigned long)(Temp*100)%100,2);
+  51   2      
+  52   2                      //阈值判断及显示
+C51 COMPILER V9.60.7.0   MAIN                                                              09/22/2024 03:24:55 PAGE 2   
+
+  53   2                      LCD_ShowSignedNum(2,4,TLow,3);
+  54   2                      LCD_ShowSignedNum(2,12,THigh,3);
+  55   2                      if (KeyNum){
+  56   3                              if (KeyNum == 1)
+  57   3                              {
+  58   4                                      TLow++;
+  59   4                                      if (TLow>=THigh)
+  60   4                                      {
+  61   5                                              TLow--;
+  62   5                                      }
+  63   4                              }
+  64   3                              if (KeyNum == 2)
+  65   3                              {
+  66   4                                      TLow--;
+  67   4                                      if (TLow<-55)
+  68   4                                      {
+  69   5                                              TLow=-55;
+  70   5                                      }
+  71   4                              }
+  72   3                              if (KeyNum == 3)
+  73   3                              {
+  74   4                                      THigh++;
+  75   4                                      if (THigh>125)
+  76   4                                      {
+  77   5                                              THigh=125;
+  78   5                                      }
+  79   4                              }
+  80   3                              if (KeyNum == 4)
+  81   3                              {
+  82   4                                      THigh--;
+  83   4                                      if (THigh<=TLow)
+  84   4                                      {
+  85   5                                              TLow--;
+  86   5                                      }
+  87   4                              }
+  88   3      
+  89   3                      }
+  90   2                      AT24C02_WriteByte(1,TLow);
+  91   2                      Delay(10);
+  92   2                      AT24C02_WriteByte(2,THigh);
+  93   2                      Delay(10);
+  94   2                      if (Temp<TLow)
+  95   2                      {
+  96   3                              LCD_ShowString(1,13,"L");
+  97   3                      }
+  98   2                      else if (Temp>THigh)
+  99   2                      {
+ 100   3                              LCD_ShowString(1,13,"H");
+ 101   3                      }
+ 102   2                      else
+ 103   2                      {
+ 104   3                              LCD_ShowString(1,13," ");
+ 105   3                      }
+ 106   2      
+ 107   2              }
+ 108   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    540    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.7.0   MAIN                                                              09/22/2024 03:24:55 PAGE 3   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)
