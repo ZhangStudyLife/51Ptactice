@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   MAIN                                                              09/22/2024 13:51:55 PAGE 1   
+C51 COMPILER V9.60.7.0   MAIN                                                              09/22/2024 16:51:28 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
@@ -14,24 +14,61 @@ line level    source
    4          #include "Key.h"
    5          #include "Nixie.h"
    6          
-   7          void main()
-   8          {
-   9   1              while(1)
-  10   1              {
-  11   2                      
-  12   2              }
-  13   1      }
+   7          sbit Motor = P1^1;
+   8          unsigned char Conuter,Compare;
+   9          unsigned char KeyNum,Speed;
+  10          
+  11          void Timer0_ISR() interrupt 1
+  12          {   
+  13   1          TL0 = 0xA4;                         //设置定时初始值
+  14   1          TH0 = 0xFF;                         //设置定时初始值
+  15   1              Conuter++;
+  16   1              Conuter%=100;
+  17   1              if(Conuter < Compare)
+  18   1              {
+  19   2                      Motor =1;
+  20   2              }
+  21   1              else
+  22   1              {
+  23   2                      Motor =0;
+  24   2              }
+  25   1      }
+  26                    
+  27          void main()
+  28          {
+  29   1              Timer0_Init();
+*** WARNING C206 IN LINE 29 OF main.c: 'Timer0_Init': missing function-prototype
+  30   1              Compare = 0;
+  31   1              Nixie(1,0);
+  32   1              while(1)
+  33   1              {
+  34   2                      KeyNum=Key();
+  35   2                      if (KeyNum==1)
+  36   2                      {
+  37   3                              Speed++;
+  38   3                              Speed%=4;
+  39   3                              Nixie(1,Speed);
+  40   3                      }
+  41   2                      if (Speed==0)Compare=0;
+  42   2                      if (Speed==1)Compare=50;
+  43   2                      if (Speed==2)Compare=75;
+  44   2                      if (Speed==3)Compare=100;
+  45   2      
+  46   2              }
+  47   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =      2    ----
+   CODE SIZE        =    109    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.7.0   MAIN                                                              09/22/2024 16:51:28 PAGE 2   
+
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =      4    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
