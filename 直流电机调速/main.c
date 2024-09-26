@@ -34,7 +34,7 @@ void main()
 		KeyNum=Key();
 		if (KeyNum==1)
 		{
-			Speed++;
+			Speed++;z
 			Speed%=4;
 			Nixie(1,Speed);
 		}

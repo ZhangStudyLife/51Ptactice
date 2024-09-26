@@ -5,6 +5,8 @@
 unsigned char second;
 void main()
 {
+	Delay(1000);
+	P1_0=0;
     LCD_Init();
     DS1302_Init();
     LCD_ShowString(1, 0, "DS1302 Test");

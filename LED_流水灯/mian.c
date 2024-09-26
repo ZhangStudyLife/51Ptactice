@@ -17,8 +17,8 @@ void Delay500ms(void)	//@11.0592MHz
 			while (--k);
 		} while (--j);
 	} while (--i);
-}
-
+}  
+unsigned char i;
 void main()
 {
 	while(1)
